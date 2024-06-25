@@ -1,5 +1,5 @@
 import { configDotenv } from 'dotenv';
-import { OpenAI } from "openai";
+import OpenAI  from "openai";
 
 configDotenv();
 
@@ -7,7 +7,7 @@ const openai = new OpenAI({
     apiKey: process.env.OPENAI_KEY,
 });
 
-const generateAIResponse = async (complaint) => {
+const generateOpenAIResponse = async (complaint) => {
     try {
         const chatCompletion = await openai.chat.completions.create({
             messages: [{ role: 'user', content: `Respond to the following customer complaint: ${complaint}` }],
@@ -21,5 +21,5 @@ const generateAIResponse = async (complaint) => {
 };
 
 export {
-    generateAIResponse
+    generateOpenAIResponse
 }
